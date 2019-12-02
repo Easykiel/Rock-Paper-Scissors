@@ -1,0 +1,92 @@
+<!doctype html>
+
+<html>
+
+    <script>
+        function computerPlay() { //Selects rock paper scissors at random
+            var selection = ['rock', 'paper', 'scissors']
+            var selected = Math.floor(Math.random() * (3)) 
+            return selection[selected]
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            var winner = ['player', 'computer', 'draw']
+
+            //If player wins
+            if ( (playerSelection == 'rock' && computerSelection == 'scissors') ||
+                    (playerSelection == 'paper' && computerSelection == 'rock') ||
+                    (playerSelection == 'scissors' && computerSelection == 'paper') ) {
+            
+                return winner[0]
+            } 
+            //If Computer Wins
+            else if ( (computerSelection == 'rock' && playerSelection == 'scissors') ||
+                    (computerSelection == 'paper' && playerSelection == 'rock') ||
+                    (computerSelection == 'scissors' && playerSelection == 'paper') ) {
+
+                return winner[1]
+            } 
+            //Draw
+            else
+                return winner[2]
+        }
+
+        function game() {
+            var currentRound = 1
+            var playerScore = 0
+            var computerScore = 0
+            var winner = ''
+            var computerWins = ''
+            const playerWins = 'You Win!'
+            const draw = "It's a Draw!"
+
+            //play for 5 rounds
+            while (currentRound <= 5) {
+                console.log('Round ' + currentRound)
+                console.log('Your score: ' + playerScore)
+                console.log('COM score: ' + computerScore)
+
+                const prompt = window.prompt('What is your choice? ')
+                const playerSelection = prompt.toLowerCase()
+                const computerSelection = computerPlay()
+                
+                console.log('Computer selects ' + computerSelection)
+                console.log('You select ' + playerSelection)
+                computerWins = 'You Lose! ' + computerSelection + ' beats ' + playerSelection
+                
+                winner = playRound(playerSelection, computerSelection)
+
+                //Player wins add to his/her score
+                if (winner == 'player') {
+                    console.log(playerWins)
+                    playerScore++
+                }
+                
+                //Computer Wins add to its score
+                else if(winner == 'computer') {
+                    console.log(computerWins)
+                    computerScore++
+                } 
+                
+                //Draw no scores added
+                else
+                    console.log(draw)
+
+                console.log('\n')
+                currentRound++
+            }
+
+            if(playerScore > computerScore)
+                console.log('Yay! You win the 5 Rounds with ' + playerScore + 'points!')
+
+            else if(computerScore > playerScore)
+                console.log('Aww! COM wins the 5 Rounds with ' + computerScore + ' points :(')
+
+            else
+                console.log("It's a draw with " + computerScore + " points!")
+        }
+
+        game()
+    </script>
+
+</html>

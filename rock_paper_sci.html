@@ -46,7 +46,7 @@
                 console.log('Your score: ' + playerScore)
                 console.log('COM score: ' + computerScore)
 
-                const prompt = window.prompt('What is your choice? ')
+                const prompt = window.prompt('Rock, Paper, or Scissors? ')
                 const playerSelection = prompt.toLowerCase()
                 const computerSelection = computerPlay()
                 
@@ -77,7 +77,7 @@
             }
 
             if(playerScore > computerScore)
-                console.log('Yay! You win the 5 Rounds with ' + playerScore + 'points!')
+                console.log('Yay! You win the 5 Rounds with ' + playerScore + ' points!')
 
             else if(computerScore > playerScore)
                 console.log('Aww! COM wins the 5 Rounds with ' + computerScore + ' points :(')
